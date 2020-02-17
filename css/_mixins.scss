@@ -1,0 +1,75 @@
+// layout styles
+@mixin flexColumn($just: space-between, $align: center, $wrap: nowrap) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $just;
+    align-items: $align;
+    flex-wrap: $wrap;
+}
+
+@mixin flexRow($just: space-between, $align: center, $wrap: nowrap) {
+    display: flex;
+    flex-direction: row;
+    justify-content: $just;
+    align-items: $align;
+    flex-wrap: $wrap;
+}
+
+@mixin grid($col, $row, $just, $align) {
+    display: grid;
+    grid-template-columns: $col;
+    grid-template-rows: $row;
+    justify-items: $just;
+    align-items: $align;
+}
+
+// button styles
+@mixin btn($margin) {
+    display: block;
+        margin: $margin;
+        font: {
+            family: $fontRaleway;
+        }
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: transparent;
+        border: {
+            bottom: 1px solid $orange;
+            top: none;
+            right: none;
+            left: none;
+        }
+        outline: none;
+        cursor: pointer;
+}
+
+//background image styles
+@mixin bgImg($url, $size, $position) {
+    background: {
+        image: $url;
+        size: $size;
+        position: $position;
+        repeat: no-repeat;
+    }
+}
+
+// text transition styles
+@mixin textTransition() {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, $orange, $orange 50%, $black 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: all 0.3s ease-out;
+}
+
+//breakpoints at different screen sizes
+@mixin breakpoint($point) {
+    @if $point == large {
+      @media (min-width: 1350px) { @content; }
+    }
+    @else if $point == medium {
+      @media (min-width: 768px) { @content; }
+    }
+}

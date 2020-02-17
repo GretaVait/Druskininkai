@@ -1,0 +1,87 @@
+/* Footer */
+footer {
+    background-color: $lightBlue;
+    padding: 40px 20px 20px 20px;
+    @include breakpoint(medium) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    @include breakpoint(large) {
+        padding: 80px 120px;
+    }
+    // footer navigation list
+    .footer__list {
+        @include breakpoint(medium) {
+            @include flexRow(space-between, flex-start, wrap);
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+        // footer navigation item
+        .footer__item {
+            @include flexColumn();
+            @include breakpoint(medium) {
+                @include flexColumn(flex-start, flex-start, nowrap);
+                width: 30%;
+            }
+            @include breakpoint(large) {
+                width: auto;
+            }
+            margin: 0 0 40px 0;
+            .footer__item__title {
+                font-size: 1.8em;
+                color: $darkBlue;
+                margin: 0 0 20px 0;
+                font-weight: 600;
+                @include breakpoint(large) {
+                    font-size: 2em;
+                }
+            }
+            .footer__item__menu {
+                @include flexColumn();
+                .footer__item__menu__link {
+                    color: $black;
+                    font-size: 1.6em;
+                    margin: 0 0 10px 0;
+                    &:hover {
+                        color: $darkBlue;
+                    }
+                    @include breakpoint(large) {
+                        transition: color 0.2s ease-in-out;
+                    }
+                }
+                @include breakpoint(medium) {
+                    @include flexColumn(center, flex-start, nowrap);
+                }
+            }
+        }
+    }
+    // footer social links
+    .footer__social {
+        @include flexRow(space-evenly, center, nowrap);
+        @include breakpoint(medium) {
+            grid-row-start: 2;
+            grid-column-start: 2;
+        }
+        @include breakpoint(medium) {
+            justify-self: end;
+        }
+        .footer__social__link {
+            display: block;
+            @include breakpoint(medium) {
+                margin: 0 0 0 25px;
+            }
+        }
+    }
+    // footer copyright
+    .footer__copyright {
+        color: $darkBlue;
+        margin: 20px 0 0 0;
+        font-size: 1.6em;
+        text-align: center;
+        @include breakpoint(medium) {
+            margin: 0;
+            align-self: center;
+            justify-self: start;
+        }
+    }
+}

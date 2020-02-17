@@ -1,0 +1,143 @@
+header {
+    @include flexRow();
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    @include breakpoint(large) {
+        padding: 30px 200px;
+    }
+    .logo {
+        text-transform: uppercase;
+        letter-spacing: 8px;
+        color: $darkBlue;
+        font-size: 1.7em;
+        @include breakpoint(large) {
+            font-size: 2em;
+        }
+    }
+    .menu {
+        display: block;
+        cursor: pointer;
+        @include flexColumn(space-around, center, nowrap);
+        width: 40px;
+        height: 40px;
+        padding: 12px 0;
+        .line {
+            height: 1px;
+            width: 25px;
+            background-color: $black;
+            transition: transform 0.15s ease-in-out;
+        }
+        @include breakpoint(large) {
+            display: none;
+        }
+    }
+}
+/* menu class .active for the first line */
+.menu.active .line:nth-child(1) {
+    background-color: $orange;
+    transform: translate(0, 5px) rotate(45deg);
+    transition: transform 0.15s ease-in-out;
+}
+/* menu class .active for the second line */
+.menu.active .line:nth-child(2) {
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+}
+/* menu class .active for the third line */
+.menu.active .line:nth-child(3) {
+    background-color: $orange;
+    transform: translate(0, -5px) rotate(-45deg);
+    transition: transform 0.15s ease-in-out;
+}
+
+/* Naviagtion */
+nav {
+    padding: 100px 20px 0 20px;
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.4s ease-in 0.01s;
+    @include breakpoint(large) {
+        position: static;
+        background: transparent;
+        transform: none;
+        opacity: 1;
+        padding: 0;
+    }
+    //navigation list
+    .nav__list {
+        @include flexColumn();
+        @include breakpoint(medium) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        @include breakpoint(large) {
+            @include flexRow(flex-end, center, nowrap);
+        }
+    }
+    // Navigation item
+    .nav__item {
+        text-align: center;
+        padding: 15px 0;
+        .nav__link {
+            color: $black;
+            text-transform: uppercase;
+            font: {
+                family: $fontRaleway;
+                size: 1.6em;
+            }
+            @include breakpoint(large) {
+                font-size: 1.2em;
+                transition: color 0.2s ease-in-out;
+            }
+            &:hover {
+                color: $orange;
+            }
+        }
+        @include breakpoint(medium) {
+            text-align: left;
+        }
+        @include breakpoint(large) {
+            margin: 0 27px 0 0;
+            padding: 0;
+        }
+    }
+}
+
+/* Button to make text larger */
+.btn--accessability {
+    @include flexRow(flex-start, center, nowrap);
+    cursor: pointer;
+    // bigger letter inside the button
+    .btn--accessability__bigger {
+        font-size: 2em;
+        margin: 16px 15px 6px 0;
+    }
+    // seperation between letters
+    .btn--accessability__sep {
+        display: block;
+        width: 1px;
+        height: 40px;
+        background-color: $orange;
+        transform: rotate(29deg);
+    }
+    // smaller letter inside the button
+    .btn--accessability__smaller {
+        font-size: 1.4em;
+        margin: 6px 0px 20px 15px;
+    }
+}
+/* nav active class to animate when opened */
+.nav--active {
+    transform: translateY(0%);
+    opacity: 1;
+}
