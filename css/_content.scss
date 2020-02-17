@@ -104,16 +104,3 @@
         }
     }
 }
-
-/* fixed div to make sure that content stays in place while scrolling image */
-.fixed {
-    background-color: $grey;
-    position: absolute;
-    top: 550px;
-    @include breakpoint(medium) {
-        top: 600px;
-    }
-    @include breakpoint(large) {
-        top: 750px;
-    }
-}

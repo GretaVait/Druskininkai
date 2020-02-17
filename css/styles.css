@@ -15,6 +15,7 @@ header {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   position: fixed;
+  top: 0;
   z-index: 5;
   width: 100%;
   background-color: #ffffff;
@@ -597,25 +598,6 @@ nav .nav__item .nav__link:hover {
 
 .content .btn--primary--center:hover {
   background-position: 0%;
-}
-
-/* fixed div to make sure that content stays in place while scrolling image */
-.fixed {
-  background-color: #FCFDFD;
-  position: absolute;
-  top: 550px;
-}
-
-@media (min-width: 768px) {
-  .fixed {
-    top: 600px;
-  }
-}
-
-@media (min-width: 1350px) {
-  .fixed {
-    top: 750px;
-  }
 }
 
 .news {

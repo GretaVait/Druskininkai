@@ -46,11 +46,9 @@ function setFontSmaller() {
 // ------------------------------------------------------
 // ------------------- Event Listeners ------------------
 // ------------------------------------------------------
-const fixed = document.querySelector('.fixed');
 
 // --------------- Event Listener load ------------------
 window.addEventListener('load', () => {
-    fixed.style.width = (window.innerWidth - 17) + 'px';
     //store users selection (font size bigger or smaller)
     fontBigger = JSON.parse(localStorage.getItem('fontBiggerLocal'));
     if (fontBigger) {
@@ -58,24 +56,8 @@ window.addEventListener('load', () => {
     }
 });
 
-window.addEventListener('resize', () => {
-    fixed.style.width = (window.innerWidth - 17) + 'px';
-});
-
 // --------------- Event Listener scroll -----------------
 window.addEventListener('scroll', () => {
-    //adds top positioning for the "uncover" effect
-    let introCover = document.querySelector('.intro__cover');
-    if (window.pageYOffset <= introCover.offsetHeight) {
-        if (window.innerWidth >= 1350) {
-            fixed.style.top = (750 + window.pageYOffset) + 'px';
-        } else if (window.innerWidth >= 768) {
-            fixed.style.top = (600 + window.pageYOffset) + 'px';
-        } else {
-            fixed.style.top = (550 + window.pageYOffset) + 'px';
-        }
-    }
-
     //add intro background image effect to scale while scrolling
     let scrollPosition = window.pageYOffset;
     const introImage = document.querySelector('.intro__image');
