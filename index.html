@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,13 +24,28 @@
         <nav>
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="#" class="nav__link">Ką veikti</a>
+                    <a href="#" class="nav__link dropdown ">Ką veikti</a>
+                    <!-- <div class="dropdown"> -->
+                        <!-- <a href="#" class="dropdown__link">Linkas #1</a>
+                        <a href="#" class="dropdown__link">Linkas #1</a>
+                        <a href="#" class="dropdown__link">Linkas #1</a> -->
+                    <!-- </div> -->
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link">Apgyvendinimas</a>
+                    <a href="#" class="nav__link dropdown">Apgyvendinimas</a>
+                    <!-- <div class="dropdown"> -->
+                        <!-- <a href="#" class="dropdown__link">Linkas #1</a>
+                        <a href="#" class="dropdown__link">Linkas #1</a>
+                        <a href="#" class="dropdown__link">Linkas #1</a> -->
+                    <!-- </div> -->
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link">Maitinimas</a>
+                    <a href="#" class="nav__link dropdown">Maitinimas</a>
+                    <!-- <div class="dropdown"> -->
+                        <!-- <a href="#" class="dropdown__link">Linkas #1</a>
+                        <a href="#" class="dropdown__link">Linkas #1</a>
+                        <a href="#" class="dropdown__link">Linkas #1</a> -->
+                    <!-- </div> -->
                 </li>
                 <li class="nav__item">
                     <a href="#" class="nav__link">Naujienos</a>
@@ -44,48 +59,121 @@
                     <span class="btn--accessability__smaller">A</span>
                 </li>
             </ul>
+            <ul class="dropdown--menu dropdown-kaveikti">
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Aktyvus laisvalaikis</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Renginiai</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Kultūra</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Paveldas</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Konferencijos</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Sveikata ir grožis</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Naktinis gyvenimas</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Spa</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Šeima</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Romantika</a>
+                </li>
+            </ul>
+            <ul class="dropdown--menu dropdown-apgyvendinimas">
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Sanatorijos/SPA</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Viešbučiai</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Svečių namai</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Privatus apgyvendinimas</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Kaimo turizmas</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Kempingai</a>
+                </li>
+            </ul>
+            <ul class="dropdown--menu dropdown-maitinimas">
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Lietuviška virtuvė</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Restoranai</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Kavinės</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Picerijos</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Kitos</a>
+                </li>
+                <li class="dropdown__item">
+                    <a href="#" class="dropdown__link">Kulinarinis paveldas</a>
+                </li>
+            </ul>
         </nav> <!-- /Nav -->
     </header> <!-- /Header -->
     <!-- Intro -->
     <section class="intro">
-        <div class="fixed-container"></div>
         <div class="intro__cover">
             <h1 class="title">Sveikatos šaltinių kurortas</h1>
             <h3 class="handwritten">Sveikata, grožis ir geroji nuotaika</h3>
         </div>
-        <div class="intro__image"></div>
+        <div style="overflow: hidden;">
+            <div class="intro__image"></div>
+        </div>
     </section> <!-- /Intro -->
     <div class="fixed">
         <!-- Content -->
         <section class="content">
-            <ul class="content__list"> <!-- Content List -->
-                <li class="content__card content__card--primary">
+            <div class="content__list"> <!-- Content List -->
+                <a href="#" class="content__card content__card--primary">
                     <img src="images/content-image1.jpg" alt="" class="card__img">
                     <h2 class="card__title">10 geriausių vietų Druskininkuose</h2>
                     <p class="card__p">Druskininkuose, arba pagal pageidavimą (apmokant transporto išlaidas). Pagal žmonių skaičių galite rinktis ir lankų komplektų kiekį. Į renginį vežame ne mažiau kaip 3 lankų komplektus.</p>
                     <button class="btn--primary--left">Skaityti Toliau</button>
-                </li>
-                <li class="content__card">
+                </a>
+                <a href="#" class="content__card">
                     <img src="images/content-image2.jpg" alt="" class="card__img">
-                    <h2 class="card__title">Ką veikti</h2>
+                    <h3 class="card__title">Ką veikti</h3>
                     <p class="card__p">Ekskursija į Liškiavos vienuolyno ansamblį vyksta su gidu. Laivas "Druskininkai" didelis, patogus. Yra 2 atviri ir 2 uždari deniai.</p>
-                </li>
-                <li class="content__card">
+                </a>
+                <a href="#" class="content__card">
                     <img src="images/content-image3.jpg" alt="" class="card__img">
-                    <h2 class="card__title">Apgyvendinimas</h2>
+                    <h3 class="card__title">Apgyvendinimas</h3>
                     <p class="card__p">Rytų išmintimi bei filosofija paremta įmonės koncepcija siekia nenutolti nuo to ir pasiūlyti savo klientams kuo platesnį ir išskirtinį rytietiškų paslaugų spektrą.</p>
-                </li>
-                <li class="content__card">
+                </a>
+                <a href="#" class="content__card">
                     <img src="images/content-image4.jpg" alt="" class="card__img">
-                    <h2 class="card__title">Maitinimas</h2>
+                    <h3 class="card__title">Maitinimas</h3>
                     <p class="card__p">ETNO DVARAS įsikūręs Druskininkų miesto centre, ramioje, vaizdingoje vietoje, Druskonio ežero pakrantėje.</p>
-                </li>
-                <li class="content__card">
+                </a>
+                <a href="#" class="content__card">
                     <img src="images/content-image5.jpg" alt="" class="card__img">
-                    <h2 class="card__title">Suplanuok savo kelionę</h2>
+                    <h3 class="card__title">Suplanuok savo kelionę</h3>
                     <p class="card__p">Pasigėrėsime įspūdinga Nemuno pakrančių panorama.</p>
-                </li>
-            </ul> <!-- /Content List -->
+                </a>
+            </div> <!-- /Content List -->
             <button class="btn--primary--center">Daugiau įrašų</button>
         </section> <!-- Content -->
         <!-- News -->
@@ -239,19 +327,19 @@
             <!-- Footer Social Links -->
             <div class="footer__social">
                 <a href="#" class="footer__social__link">
-                    <img src="images/facebook.svg" alt="" class="footer__social__link__icon">
+                    <img src="images/facebook.svg" alt="">
                 </a>
                 <a href="#" class="footer__social__link">
-                    <img src="images/instagram.svg" alt="" class="footer__social__link__icon">
+                    <img src="images/instagram.svg" alt="">
                 </a>
                 <a href="#" class="footer__social__link">
-                    <img src="images/youtube.svg" alt="" class="footer__social__link__icon">
+                    <img src="images/youtube.svg" alt="">
                 </a>
                 <a href="#" class="footer__social__link ">
-                    <img src="images/pinterest.svg" alt="" class="footer__social__link__icon">
+                    <img src="images/pinterest.svg" alt="">
                 </a>
                 <a href="#" class="footer__social__link">
-                    <img src="images/vk.svg" alt="" class="footer__social__link__icon">
+                    <img src="images/vk.svg" alt="">
                 </a>
             </div> <!-- /Footer Social Links -->
             <p class="footer__copyright">&copy; 2020 Visit Druskininkai</p>

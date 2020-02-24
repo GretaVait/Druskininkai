@@ -6,8 +6,9 @@
         margin: 80px 0 0 0;
     }
     @include breakpoint(large) {
-        margin: 120px 0 0 0;
-        padding: 0 200px;
+        margin: 120px auto 0 auto;
+        max-width: 1119px;
+        padding: 0;
     }
     .content__list {
         @include breakpoint(medium) {
@@ -15,12 +16,13 @@
         }
         // Rest of the secondary cards
         .content__card {
+            display: block;
             margin: 0 0 50px;
             @include breakpoint(medium) {
-                width: 30%;
+                width: calc((100%/3) - 38px);
             }
             @include breakpoint(large) {
-                width: 22%;
+                width: calc((100%/4) - 28px);
             }
             .card__img {
                 width: 100%;
@@ -49,6 +51,7 @@
             .btn--primary--left {
                 margin: 25px 0 0 0;
                 font-size: 1em;
+                padding: 0 0 3px 0;
                 @include btn(0);
                 @include breakpoint(large) {
                     font-size: 1.4em;
@@ -77,6 +80,7 @@
             .card__title {
                 @include breakpoint(large) {
                     font-size: 3.6em;
+                    margin: 0 0 25px 0;
                 }
             }
             .card__p {
@@ -86,6 +90,7 @@
             }
             .btn--primary--left {
                 margin: 24px 0 0 0;
+                padding: 0 0 3px 0;
                 @include breakpoint(medium) {
                     grid-column-start: 2;
                 }
@@ -95,6 +100,7 @@
     .btn--primary--center {
         @include btn(0 auto);
         font-size: 1em;
+        padding: 0 0 3px 0;
         @include breakpoint(large) {
             font-size: 1.4em;
             @include textTransition();
@@ -110,6 +116,7 @@
     background-color: $grey;
     position: absolute;
     top: 550px;
+    width: 100%;
     @include breakpoint(medium) {
         top: 600px;
     }

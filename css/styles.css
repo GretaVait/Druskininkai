@@ -137,6 +137,50 @@ nav {
   }
 }
 
+nav .dropdown--menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  padding: 30px 200px;
+  position: absolute;
+  background: #ffffff;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  -webkit-transform: translate(0, -100%);
+          transform: translate(0, -100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -10;
+  background: #ffffff;
+  -webkit-transition: opacity 0.2s ease-in 0.01s, -webkit-transform 0.3s ease-in-out;
+  transition: opacity 0.2s ease-in 0.01s, -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.2s ease-in 0.01s;
+  transition: transform 0.3s ease-in-out, opacity 0.2s ease-in 0.01s, -webkit-transform 0.3s ease-in-out;
+}
+
+nav .dropdown--menu .dropdown__link {
+  font-size: 1.4em;
+}
+
+nav .dropdown--active {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  opacity: 1;
+}
+
 nav .nav__list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -185,6 +229,7 @@ nav .nav__list {
 }
 
 nav .nav__item {
+  position: relative;
   text-align: center;
   padding: 15px 0;
 }
@@ -202,6 +247,21 @@ nav .nav__item .nav__link {
     -webkit-transition: color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out;
   }
+  nav .nav__item .nav__link.dropdown::after {
+    content: url(../images/dropdown.svg);
+    width: 12px;
+    height: 16px;
+    position: absolute;
+    margin: 0 0 0 5px;
+    -webkit-transition: -webkit-transform 0.2s ease-in-out 0s;
+    transition: -webkit-transform 0.2s ease-in-out 0s;
+    transition: transform 0.2s ease-in-out 0s;
+    transition: transform 0.2s ease-in-out 0s, -webkit-transform 0.2s ease-in-out 0s;
+  }
+  nav .nav__item .nav__link.dropdown.open::after {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
 }
 
 nav .nav__item .nav__link:hover {
@@ -216,7 +276,7 @@ nav .nav__item .nav__link:hover {
 
 @media (min-width: 1350px) {
   nav .nav__item {
-    margin: 0 27px 0 0;
+    margin: 0 37px 0 0;
     padding: 0;
   }
 }
@@ -243,21 +303,21 @@ nav .nav__item .nav__link:hover {
 
 .btn--accessability .btn--accessability__bigger {
   font-size: 2em;
-  margin: 16px 15px 6px 0;
+  margin: 0 10px 0 0;
 }
 
 .btn--accessability .btn--accessability__sep {
   display: block;
   width: 1px;
   height: 40px;
-  background-color: #D88B6C;
-  -webkit-transform: rotate(29deg);
-          transform: rotate(29deg);
+  background-color: #DBDBDB;
+  -webkit-transform: rotate(24deg);
+          transform: rotate(24deg);
 }
 
 .btn--accessability .btn--accessability__smaller {
   font-size: 1.4em;
-  margin: 6px 0px 20px 15px;
+  margin: 0 0 2px 8px;
 }
 
 /* nav active class to animate when opened */
@@ -271,25 +331,13 @@ nav .nav__item .nav__link:hover {
   background-color: #F9F6EF;
 }
 
-.intro .fixed-container {
-  width: 100%;
-  height: 60px;
-  background-color: transparent;
-  z-index: 20;
-}
-
-@media (min-width: 1350px) {
-  .intro .fixed-container {
-    height: 100px;
-  }
-}
-
-.intro .intro__cover {
+.intro__cover {
+  position: relative;
   height: 340px;
   padding: 0 20px;
   background-color: #F9F6EF;
   background-image: url(../images/pattern.svg);
-  background-size: cover;
+  background-size: 120%;
   background-position: 180px 50%;
   background-repeat: no-repeat;
   display: -webkit-box;
@@ -310,39 +358,41 @@ nav .nav__item .nav__link:hover {
 }
 
 @media (min-width: 768px) {
-  .intro .intro__cover {
+  .intro__cover {
     background-position: 500px 50%;
     height: 400px;
+    background-size: 85%;
   }
 }
 
 @media (min-width: 1350px) {
-  .intro .intro__cover {
-    height: 450px;
+  .intro__cover {
+    height: 500px;
     padding: 0 200px;
     background-position: 1000px 50%;
+    background-size: 60%;
   }
 }
 
-.intro .intro__cover .title {
+.intro__cover .title {
   font-size: 2.8em;
   font-family: "Noto Serif", serif;
   font-weight: 400;
 }
 
 @media (min-width: 768px) {
-  .intro .intro__cover .title {
+  .intro__cover .title {
     font-size: 4.2em;
   }
 }
 
 @media (min-width: 1350px) {
-  .intro .intro__cover .title {
+  .intro__cover .title {
     font-size: 5.4em;
   }
 }
 
-.intro .intro__cover .handwritten {
+.intro__cover .handwritten {
   font-size: 3em;
   font-family: "Alex Brush", cursive;
   font-weight: 400;
@@ -351,40 +401,35 @@ nav .nav__item .nav__link:hover {
 }
 
 @media (min-width: 768px) {
-  .intro .intro__cover .handwritten {
+  .intro__cover .handwritten {
     font-size: 4.7em;
     margin: 10px 0 0 50px;
   }
 }
 
 @media (min-width: 1350px) {
-  .intro .intro__cover .handwritten {
+  .intro__cover .handwritten {
+    position: absolute;
+    top: 48%;
     font-size: 6em;
     margin: 10px 0 0 126px;
   }
 }
 
-.intro .intro__image {
+.intro__image {
   background-image: url(../images/bg.jpg);
-  background-size: 300%;
+  background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   width: 100%;
   z-index: -1;
-  height: 100vh;
-}
-
-@media (min-width: 768px) {
-  .intro .intro__image {
-    background-size: 200%;
-  }
-}
-
-@media (min-width: 1350px) {
-  .intro .intro__image {
-    background-size: 100%;
-  }
+  height: 800px;
+  display: inline-block;
+  width: 100%;
+  -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+  will-change: transform;
 }
 
 /* Content */
@@ -401,8 +446,9 @@ nav .nav__item .nav__link:hover {
 
 @media (min-width: 1350px) {
   .content {
-    margin: 120px 0 0 0;
-    padding: 0 200px;
+    margin: 120px auto 0 auto;
+    max-width: 1119px;
+    padding: 0;
   }
 }
 
@@ -427,18 +473,19 @@ nav .nav__item .nav__link:hover {
 }
 
 .content .content__list .content__card {
+  display: block;
   margin: 0 0 50px;
 }
 
 @media (min-width: 768px) {
   .content .content__list .content__card {
-    width: 30%;
+    width: calc((100%/3) - 38px);
   }
 }
 
 @media (min-width: 1350px) {
   .content .content__list .content__card {
-    width: 22%;
+    width: calc((100%/4) - 28px);
   }
 }
 
@@ -480,6 +527,7 @@ nav .nav__item .nav__link:hover {
 .content .content__list .content__card .btn--primary--left {
   margin: 25px 0 0 0;
   font-size: 1em;
+  padding: 0 0 3px 0;
   display: block;
   margin: 0;
   font-family: "Raleway", sans-serif;
@@ -543,6 +591,7 @@ nav .nav__item .nav__link:hover {
 @media (min-width: 1350px) {
   .content .content__list .content__card--primary .card__title {
     font-size: 3.6em;
+    margin: 0 0 25px 0;
   }
 }
 
@@ -555,6 +604,7 @@ nav .nav__item .nav__link:hover {
 
 .content .content__list .content__card--primary .btn--primary--left {
   margin: 24px 0 0 0;
+  padding: 0 0 3px 0;
 }
 
 @media (min-width: 768px) {
@@ -578,6 +628,7 @@ nav .nav__item .nav__link:hover {
   outline: none;
   cursor: pointer;
   font-size: 1em;
+  padding: 0 0 3px 0;
 }
 
 @media (min-width: 1350px) {
@@ -604,6 +655,7 @@ nav .nav__item .nav__link:hover {
   background-color: #FCFDFD;
   position: absolute;
   top: 550px;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -625,8 +677,9 @@ nav .nav__item .nav__link:hover {
 
 @media (min-width: 1350px) {
   .news {
-    padding: 0 200px;
-    margin: 120px 0;
+    margin: 120px auto;
+    max-width: 1119px;
+    padding: 0;
   }
 }
 
@@ -660,7 +713,7 @@ nav .nav__item .nav__link:hover {
 }
 
 .news .categories--large .categories__item {
-  display: inline;
+  display: inline-block;
   margin: 0 32px 0 0;
 }
 
@@ -965,7 +1018,7 @@ footer .footer__list .footer__item .footer__item__menu {
 footer .footer__list .footer__item .footer__item__menu .footer__item__menu__link {
   color: #2B2B2B;
   font-size: 1.6em;
-  margin: 0 0 10px 0;
+  margin: 0 0 15px 0;
 }
 
 footer .footer__list .footer__item .footer__item__menu .footer__item__menu__link:hover {
@@ -1078,12 +1131,17 @@ html {
   font-size: 62.5%;
 }
 
+.bigger-font-size {
+  font-size: 66.5%;
+}
+
 li {
   list-style-type: none;
 }
 
 a {
   text-decoration: none;
+  color: #2B2B2B;
 }
 
 p {
