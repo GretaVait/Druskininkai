@@ -15,9 +15,13 @@
         }
         @include breakpoint(large) {
             height: 500px;
-            padding: 0 200px;
             background-position: 1000px 50%;
             background-size: 60%;
+        }
+        .intro__cover__content {
+            width: 1119px;
+            padding: 0;
+            margin: auto;
         }
         // title for cover
         .title {

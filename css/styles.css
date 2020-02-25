@@ -1,19 +1,4 @@
 header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
   position: fixed;
   z-index: 5;
   width: 100%;
@@ -23,7 +8,35 @@ header {
 
 @media (min-width: 1350px) {
   header {
-    padding: 30px 200px;
+    padding: 0;
+  }
+}
+
+header .header__content {
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 1350px) {
+  header .header__content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    padding: 30px 0;
+    width: 1119px;
+    margin: auto;
   }
 }
 
@@ -137,6 +150,23 @@ nav {
   }
 }
 
+nav .dropdown--content {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  -webkit-transform: translate(0, -100%);
+          transform: translate(0, -100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -10;
+  -webkit-transition: opacity 0.2s ease-in 0.01s, -webkit-transform 0.3s ease-in-out;
+  transition: opacity 0.2s ease-in 0.01s, -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.2s ease-in 0.01s;
+  transition: transform 0.3s ease-in-out, opacity 0.2s ease-in 0.01s, -webkit-transform 0.3s ease-in-out;
+}
+
 nav .dropdown--menu {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -153,22 +183,14 @@ nav .dropdown--menu {
           align-items: center;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  padding: 30px 200px;
-  position: absolute;
+  padding: 30px 0;
+  max-width: 1119px;
+  margin: auto;
   background: #ffffff;
   top: 100px;
   left: 0;
   width: 100%;
-  -webkit-transform: translate(0, -100%);
-          transform: translate(0, -100%);
-  opacity: 0;
-  pointer-events: none;
-  z-index: -10;
-  background: #ffffff;
-  -webkit-transition: opacity 0.2s ease-in 0.01s, -webkit-transform 0.3s ease-in-out;
-  transition: opacity 0.2s ease-in 0.01s, -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, opacity 0.2s ease-in 0.01s;
-  transition: transform 0.3s ease-in-out, opacity 0.2s ease-in 0.01s, -webkit-transform 0.3s ease-in-out;
+  background-color: #ffffff;
 }
 
 nav .dropdown--menu .dropdown__link {
@@ -176,9 +198,11 @@ nav .dropdown--menu .dropdown__link {
 }
 
 nav .dropdown--active {
+  pointer-events: auto;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
   opacity: 1;
+  z-index: 1;
 }
 
 nav .nav__list {
@@ -368,10 +392,15 @@ nav .nav__item .nav__link:hover {
 @media (min-width: 1350px) {
   .intro__cover {
     height: 500px;
-    padding: 0 200px;
     background-position: 1000px 50%;
     background-size: 60%;
   }
+}
+
+.intro__cover .intro__cover__content {
+  width: 1119px;
+  padding: 0;
+  margin: auto;
 }
 
 .intro__cover .title {
@@ -900,18 +929,29 @@ footer {
   padding: 40px 20px 20px 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1350px) {
   footer {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+    padding: 80px 0;
   }
 }
 
 @media (min-width: 1350px) {
-  footer {
-    padding: 80px 120px;
+  footer .footer__content {
+    width: 1119px;
+    margin: auto;
+    -ms-grid-column: 1;
+        grid-column-start: 1;
+    grid-column-end: 3;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
+    justify-items: stretch;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
   }
 }
 

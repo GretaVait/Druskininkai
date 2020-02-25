@@ -62,7 +62,7 @@ menu.addEventListener('click', () => {
 
 // ----------------- Dropdown menu ---------------------
 const navLink = document.querySelectorAll('.nav__link');
-const dropdownMenu = document.querySelectorAll('.dropdown--menu');
+const dropdownMenu = document.querySelectorAll('.dropdown--content');
 console.log(window.innerWidth);
 
 for (let i = 0; i < navLink.length; i++) {
