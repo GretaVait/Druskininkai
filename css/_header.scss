@@ -1,14 +1,23 @@
 header {
-    @include flexRow();
     position: fixed;
-    top: 0;
     z-index: 5;
     width: 100%;
     background-color: #ffffff;
     padding: 10px 20px;
     @include breakpoint(large) {
-        padding: 30px 200px;
+        padding: 0;
     }
+    .header__content {
+        position: relative;
+        z-index: 10;
+        @include breakpoint(large) {
+            @include flexRow();
+            padding: 30px 0;
+            width: 1119px;
+            margin: auto;
+        }
+    }
+
     .logo {
         text-transform: uppercase;
         letter-spacing: 8px;
@@ -74,6 +83,38 @@ nav {
         opacity: 1;
         padding: 0;
     }
+    .dropdown--content {
+        position: fixed;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        transform: translate(0, -100%);
+        opacity: 0;
+        pointer-events: none;
+        z-index: -10;
+        transition: transform 0.3s ease-in-out, opacity 0.2s ease-in 0.01s;
+    }
+    .dropdown--menu {
+        @include flexRow();
+        padding: 30px 0;
+        max-width: 1119px;
+        margin: auto;
+        background: #ffffff;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        .dropdown__link {
+            font-size: 1.4em;
+        }
+    }
+    .dropdown--active {
+        pointer-events: auto;
+        transform: translate(0, 0);
+        opacity: 1;
+        z-index: 1;
+    }
     //navigation list
     .nav__list {
         @include flexColumn();
@@ -87,6 +128,7 @@ nav {
     }
     // Navigation item
     .nav__item {
+        position: relative;
         text-align: center;
         padding: 15px 0;
         .nav__link {
@@ -99,6 +141,17 @@ nav {
             @include breakpoint(large) {
                 font-size: 1.2em;
                 transition: color 0.2s ease-in-out;
+                &.dropdown::after {
+                    content: url(../images/dropdown.svg);
+                    width: 12px;
+                    height: 16px;
+                    position: absolute;
+                    margin: 0 0 0 5px;
+                    transition: transform 0.2s ease-in-out 0s;
+                }
+                &.dropdown.open::after {
+                    transform: rotate(180deg);
+                }
             }
             &:hover {
                 color: $orange;
@@ -108,7 +161,7 @@ nav {
             text-align: left;
         }
         @include breakpoint(large) {
-            margin: 0 27px 0 0;
+            margin: 0 37px 0 0;
             padding: 0;
         }
     }
@@ -121,20 +174,20 @@ nav {
     // bigger letter inside the button
     .btn--accessability__bigger {
         font-size: 2em;
-        margin: 16px 15px 6px 0;
+        margin: 0 10px 0 0;
     }
     // seperation between letters
     .btn--accessability__sep {
         display: block;
         width: 1px;
         height: 40px;
-        background-color: $orange;
-        transform: rotate(29deg);
+        background-color: #DBDBDB;
+        transform: rotate(24deg);
     }
     // smaller letter inside the button
     .btn--accessability__smaller {
         font-size: 1.4em;
-        margin: 6px 0px 20px 15px;
+        margin: 0 0 2px 8px;
     }
 }
 /* nav active class to animate when opened */

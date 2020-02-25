@@ -2,8 +2,9 @@
     padding: 0 20px;
     margin: 60px 0 80px 0;
     @include breakpoint(large) {
-        padding: 0 200px;
-        margin: 120px 0;
+        margin: 120px auto;
+        max-width: 1119px;
+        padding: 0;
     }
     // select tag for mobile devices
     .categories--small {
@@ -32,7 +33,7 @@
             display: block;
         }
         .categories__item {
-            display: inline;
+            display: inline-block;
             margin: 0 32px 0 0;
             .categories__item--link {
                 color: $black;

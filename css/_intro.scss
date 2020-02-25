@@ -1,29 +1,27 @@
 .intro {
     background-color: $lightBeige;
-    // container used under the navigation to recreate the lost space
-    .fixed-container {
-        width: 100%;
-        height: 60px;
-        background-color: transparent;
-        z-index: 20;
-        @include breakpoint(large) {
-            height: 100px;
-        }
     }
     .intro__cover {
+        position: relative;
         height: 340px;
         padding: 0 20px;
         background-color: $lightBeige;
-        @include bgImg(url(../images/pattern.svg), cover, 180px 50%); 
+        @include bgImg(url(../images/pattern.svg), 120%, 180px 50%); 
         @include flexColumn(center, flex-start, nowrap);
         @include breakpoint(medium) {
             background-position: 500px 50%;
             height: 400px;
+            background-size: 85%;
         }
         @include breakpoint(large) {
-            height: 450px;
-            padding: 0 200px;
+            height: 500px;
             background-position: 1000px 50%;
+            background-size: 60%;
+        }
+        .intro__cover__content {
+            width: 1119px;
+            padding: 0;
+            margin: auto;
         }
         // title for cover
         .title {
@@ -53,6 +51,8 @@
                 margin: 10px 0 0 50px;
             }
             @include breakpoint(large) {
+                position: absolute;
+                top: 48%;
                 font-size: 6em;
                 margin: 10px 0 0 126px;
             }
@@ -60,16 +60,13 @@
     }
     //intro fixed image
     .intro__image {
-        @include bgImg(url(../images/bg.jpg), 300%, 50% 50%); 
+        @include bgImg(url(../images/bg.jpg), cover, 50% 50%); 
         background-attachment: fixed;
         width: 100%;
         z-index: -1;
-        height: 100vh;
-        @include breakpoint(medium) {
-            background-size: 200%;
-        }
-        @include breakpoint(large) {
-            background-size: 100%;
-        }
+        height: 800px;
+        display: inline-block;
+        width: 100%;
+        transform: scale3d(1, 1, 1);
+        will-change: transform;
     }
-}

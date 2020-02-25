@@ -1,73 +1,49 @@
 // ------------------------------------------------------
 // ------------------- Functions ------------------------
 // ------------------------------------------------------
-
-//increase font size by 2px
-function fontSizeBig(fontTag) {
-    for (let i = 0; i < fontTag.length; i++) {
-        fontTag[i].style.fontSize = `${parseInt(window.getComputedStyle(fontTag[i]).fontSize) + 2}px`;
-    }
-}
-//decrease font size by 2px
-function fontSizeSmall(fontTag) {
-    for (let i = 0; i < fontTag.length; i++) {
-        fontTag[i].style.fontSize = `${parseInt(window.getComputedStyle(fontTag[i]).fontSize) - 2}px`;
-    }
-}
-//sets font size bigger
-function setFontBigger() {
-    btnAccessBigger.style.color = '#D88B6C';
-    btnAccessSmaller.style.color = '#D88B6C';
-
-    fontSizeBig(h1);
-    fontSizeBig(h2);
-    fontSizeBig(h3);
-    fontSizeBig(p);
-    fontSizeBig(a);
-    fontSizeBig(span);
-    fontSizeBig(button);
-    fontSizeBig(select);
-}
-//sets font size smaller
-function setFontSmaller() {
-    btnAccessBigger.style.color = '#2B2B2B';
-    btnAccessSmaller.style.color = '#2B2B2B';
-
-    fontSizeSmall(h1);
-    fontSizeSmall(h2);
-    fontSizeSmall(h3);
-    fontSizeSmall(p);
-    fontSizeSmall(a);
-    fontSizeSmall(span);
-    fontSizeSmall(button);
-    fontSizeSmall(select);
+function toggleDropdown(activeDropdown, inactiveDropdown1, inactiveDropdown2, inactiveLink1, inactiveLink2) {
+    activeDropdown.classList.toggle('dropdown--active');
+    inactiveDropdown1.classList.remove('dropdown--active');
+    inactiveDropdown2.classList.remove('dropdown--active');
+    inactiveLink1.classList.remove('open');
+    inactiveLink2.classList.remove('open');
 }
 
 // ------------------------------------------------------
 // ------------------- Event Listeners ------------------
 // ------------------------------------------------------
+const fixed = document.querySelector('.fixed');
 
 // --------------- Event Listener load ------------------
+let introCover = document.querySelector('.intro__cover');
 window.addEventListener('load', () => {
     //store users selection (font size bigger or smaller)
     fontBigger = JSON.parse(localStorage.getItem('fontBiggerLocal'));
     if (fontBigger) {
-        setFontBigger();
+        html.classList.add('bigger-font-size');
+    }
+    if (window.pageYOffset > introCover.offsetHeight) {
+        fixed.style.top = 750 + introCover.offsetHeight + 'px';
     }
 });
 
 // --------------- Event Listener scroll -----------------
 window.addEventListener('scroll', () => {
+    //adds top positioning for the "uncover" effect
+    if (window.pageYOffset <= introCover.offsetHeight) {
+        if (window.innerWidth >= 1350) {
+            fixed.style.top = (750 + window.pageYOffset) + 'px';
+        } else if (window.innerWidth >= 768) {
+            fixed.style.top = (600 + window.pageYOffset) + 'px';
+        } else {
+            fixed.style.top = (550 + window.pageYOffset) + 'px';
+        }
+    }
+
     //add intro background image effect to scale while scrolling
     let scrollPosition = window.pageYOffset;
     const introImage = document.querySelector('.intro__image');
-    if (window.innerWidth >= 1350) {
-        introImage.style.backgroundSize = 100 + (scrollPosition / 40) + '%';
-    } else if (window.innerWidth >= 768) {
-        introImage.style.backgroundSize = 200 + (scrollPosition / 40) + '%';
-    } else {
-        introImage.style.backgroundSize = 300 + (scrollPosition / 40) + '%';
-    }
+    introImage.style.transform = `scale3d(${1 + (scrollPosition/3000)}, ${1 + (scrollPosition/3000)}, 1)`;
 });
 
 // -------------------- Menu --------------------------
@@ -84,6 +60,30 @@ menu.addEventListener('click', () => {
     }, 500);
 });
 
+// ----------------- Dropdown menu ---------------------
+const navLink = document.querySelectorAll('.nav__link');
+const dropdownMenu = document.querySelectorAll('.dropdown--content');
+console.log(window.innerWidth);
+
+for (let i = 0; i < navLink.length; i++) {
+    navLink[i].addEventListener('click', () => {
+        if (window.innerWidth >= 1350) {
+            if (navLink[i].classList.contains('dropdown')) {
+                navLink[i].classList.toggle('open');
+                if (navLink[i].innerHTML === "Ką veikti") {
+                    toggleDropdown(dropdownMenu[0], dropdownMenu[1], dropdownMenu[2], navLink[1], navLink[2]);
+                }
+                if (navLink[i].innerHTML === "Apgyvendinimas") {
+                    toggleDropdown(dropdownMenu[1], dropdownMenu[2], dropdownMenu[0], navLink[0], navLink[2]);
+                }
+                if (navLink[i].innerHTML === "Maitinimas") {
+                    toggleDropdown(dropdownMenu[2], dropdownMenu[1], dropdownMenu[0], navLink[0], navLink[1]);
+                }
+            }
+        }
+    });
+}
+
 // --------------- Accessability -----------------------
 //get all elements which font size will change
 const h1 = document.querySelectorAll('h1');
@@ -99,15 +99,22 @@ const btnAccess = document.querySelector('.btn--accessability');
 const btnAccessBigger = document.querySelector('.btn--accessability__bigger');
 const btnAccessSmaller = document.querySelector('.btn--accessability__smaller');
 //get fontBigger to false - font size is smaller
+let html = document.querySelector('html');
 let fontBigger = false;
 
 //when accessability button clicked increase/decrease font size
 btnAccess.addEventListener('click', () => {
     if (!fontBigger) {
-        setFontBigger();
+        btnAccessBigger.style.color = '#D88B6C';
+        btnAccessSmaller.style.color = '#D88B6C';
+
+        html.classList.add('bigger-font-size');
         fontBigger = true;
     } else {
-        setFontSmaller();
+        btnAccessBigger.style.color = '#2B2B2B';
+        btnAccessSmaller.style.color = '#2B2B2B';
+
+        html.classList.remove('bigger-font-size');
         fontBigger = false;
     }
     //store the value in local storage
@@ -121,9 +128,7 @@ const newsItem = document.querySelectorAll('.news__item');
 
 for (let i = 0; i < select.length; i++) {
     select[i].addEventListener('change', (event) => {
-        console.log(event.target.value.toUpperCase());
         for (let j = 0; j < newsItem.length; j++) {
-            console.log(tag[j].innerHTML.toUpperCase());
             if (event.target.value.toUpperCase() === tag[j].innerHTML.toUpperCase()) {
                 newsItem[j].style.display = 'block';
             } else {
@@ -163,7 +168,10 @@ $(document).ready(function(){
 $('.categories__item--link.naujienos').on('click', function() {
     $('.news__list').slick('slickUnfilter');
     $('.news__list').slick('slickFilter', function() {
-      return $(this).hasClass("naujienos");
+        $('.categories__item--link.naujienos').css("color", "#D88B6C");
+        $('.categories__item--link.renginiai').css("color", "#2B2B2B");
+        $('.categories__item--link.tinklarastis').css("color", "#2B2B2B");
+        return $(this).hasClass("naujienos");
     });
     $('.slider__count--secondary').text(Math.ceil($('.slick-slide').length / 3));
 });
@@ -171,7 +179,10 @@ $('.categories__item--link.naujienos').on('click', function() {
 $('.categories__item--link.renginiai').on('click', function() {
     $('.news__list').slick('slickUnfilter');
     $('.news__list').slick('slickFilter', function() {
-      return $(this).hasClass("renginiai");
+        $('.categories__item--link.renginiai').css("color", "#D88B6C");
+        $('.categories__item--link.naujienos').css("color", "#2B2B2B");
+        $('.categories__item--link.tinklarastis').css("color", "#2B2B2B");
+        return $(this).hasClass("renginiai");
     });
     $('.slider__count--secondary').text(Math.ceil($('.slick-slide').length / 3));
 });
@@ -179,7 +190,10 @@ $('.categories__item--link.renginiai').on('click', function() {
 $('.categories__item--link.tinklarastis').on('click', function() {
     $('.news__list').slick('slickUnfilter');
     $('.news__list').slick('slickFilter', function() {
-      return $(this).hasClass("tinklarastis");
+        $('.categories__item--link.tinklarastis').css("color", "#D88B6C");
+        $('.categories__item--link.renginiai').css("color", "#2B2B2B");
+        $('.categories__item--link.naujienos').css("color", "#2B2B2B");
+        return $(this).hasClass("tinklarastis");
     });
     $('.slider__count--secondary').text(Math.ceil($('.slick-slide').length / 3));
 });

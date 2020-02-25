@@ -2,12 +2,17 @@
 footer {
     background-color: $lightBlue;
     padding: 40px 20px 20px 20px;
-    @include breakpoint(medium) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
     @include breakpoint(large) {
-        padding: 80px 120px;
+        padding: 80px 0;
+    }
+    .footer__content {
+        @include breakpoint(large) {
+            width: 1119px;
+            margin: auto;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            @include grid(1fr 1fr, auto, stretch, stretch);
+        }
     }
     // footer navigation list
     .footer__list {
@@ -41,7 +46,7 @@ footer {
                 .footer__item__menu__link {
                     color: $black;
                     font-size: 1.6em;
-                    margin: 0 0 10px 0;
+                    margin: 0 0 15px 0;
                     &:hover {
                         color: $darkBlue;
                     }
